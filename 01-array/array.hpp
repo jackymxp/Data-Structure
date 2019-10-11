@@ -55,6 +55,11 @@ public:
         assert(index >= 0 && index < count);
         return data[index];
     }
+    T operator[](int index)
+    {
+        assert(index >= 0 && index < count);
+        return data[index];
+    }
     T getFirst(){return get(0);}
     T getLast(){return get(count-1);}
 

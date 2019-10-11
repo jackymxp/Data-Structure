@@ -1,5 +1,5 @@
-//#include "../01-array/array.hpp"
-#include "array.hpp"
+#include "../01-array/array.hpp"
+
 template<typename T>
 class Stack
 {
@@ -31,7 +31,7 @@ ostream& operator<<(ostream& os, Stack<T>& s)
     os << "[";
     for(int i = 0; i < s.size(); i++)
     {
-        os << s.arr.get(i);
+        os << s.arr[i];
         if(i != s.size() - 1)
             os << ", ";
     }

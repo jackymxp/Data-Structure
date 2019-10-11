@@ -10,11 +10,11 @@ private:
     int age;
     int score;
 };
-    ostream& operator<<(ostream& os, Student& s)
-    {  
-        os << "age = " << s.age << "  score = " << s.score << endl;
-        return os;
-    }
+ostream& operator<<(ostream& os, Student& s)
+{
+    os << "age = " << s.age << "  score = " << s.score << endl;
+    return os;
+}
 int main(void)
 {
     cout << "test array " << endl;
@@ -28,6 +28,8 @@ int main(void)
     cout << a << endl;
     cout << a.removeLast() << endl;
     cout << a << endl;
+    cout <<"a[2] = " << a[2] << endl;
+
 
     Array<Student> s;
     for(int i = 0; i < 50; i++)
@@ -36,4 +38,6 @@ int main(void)
         s.add(0, t);
     }
     cout << s << endl;
+    Student t = s[0];
+    cout << t << endl;
 }

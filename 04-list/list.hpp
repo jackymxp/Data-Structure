@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -59,7 +60,7 @@ template<typename T>
 ostream& operator<<(ostream& os, List<T>& p)
 {
     os << "size = " << p.count << endl;
-    auto h = p.head;
+    auto* h = p.head;
     while(h)
     {
         if(h->next)

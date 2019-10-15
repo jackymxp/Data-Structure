@@ -20,6 +20,14 @@ private:
     int count;
 public:
     List():head(NULL), count(0){}
+    ~List(){
+        Node* p = head;
+        while(p){
+            Node* next = p->next;
+            delete p;
+            p = next;
+        }
+    }
     int size() {return count;}
     bool isEmpty() {return count == 0;}
     void addFirst(T e)

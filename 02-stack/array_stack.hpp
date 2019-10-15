@@ -1,14 +1,14 @@
 #include "../01-array/array.hpp"
 
 template<typename T>
-class Stack
+class ArrayStack
 {
 public:
-    Stack(int cap)
+    ArrayStack(int cap)
     {
         arr = Array<T>(cap);
     }
-    Stack()
+    ArrayStack()
     {
         arr = Array<T>();
     }
@@ -19,13 +19,13 @@ public:
     T top(){return arr.getLast();}
     T pop() {return arr.removeLast();}
     template<typename T1>
-    friend ostream& operator<<(ostream& os, Stack<T1>& s);
+    friend ostream& operator<<(ostream& os, ArrayStack<T1>& s);
 private:
     Array<T> arr;
 };
 
 template<typename T>
-ostream& operator<<(ostream& os, Stack<T>& s)
+ostream& operator<<(ostream& os, ArrayStack<T>& s)
 {
     os << "stack size = " << s.size() << "    stack capacity = " << s.getCapacity() << endl;
     os << "[";

@@ -1,4 +1,5 @@
 #include "array_stack.hpp"
+#include "list_stack.hpp"
 
 class Student
 {
@@ -17,9 +18,11 @@ ostream& operator<<(ostream& os, Student& s)
     return os;
 }
 
-int main(void)
+
+void test_array_stack()
 {
-    Stack<int> s1(30);
+    cout << "test_array_stack" << endl;
+    ArrayStack<int> s1(30);
     for (int i = 0; i < 10; ++i)
         s1.push(i);
     cout << s1 << endl;
@@ -28,7 +31,7 @@ int main(void)
     cout << s1 << endl;
 
 
-    Stack<Student> s2(100);
+    ArrayStack<Student> s2(100);
     
     for(int i = 0; i < 50; i++)
     {   
@@ -42,5 +45,38 @@ int main(void)
         s2.pop();
         cout << ss << endl;
     }
+}
+void test_list_stack()
+{
+    cout << "test_list_stack" << endl;
+    ListStack<int> s1;
+    for (int i = 0; i < 10; ++i)
+        s1.push(i);
+    cout << s1 << endl;
+    cout << s1.top() << endl;
+    cout << s1.pop() << endl;
+    cout << s1 << endl;
+
+
+    ArrayStack<Student> s2;
+    
+    for(int i = 0; i < 50; i++)
+    {   
+        Student t(i, i * 10);
+        s2.push(t);
+    }
+    
+    while(!s2.isEmpty())
+    {
+        Student ss = s2.top();
+        s2.pop();
+        cout << ss << endl;
+    }
+}
+int main(void)
+{
+    test_array_stack();
+    test_list_stack();
+
     return 0;
 }

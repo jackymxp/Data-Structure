@@ -12,7 +12,7 @@ private:
     int capacity;
     void resize(int newCap) 
     {
-        T* newData = new T[newCap];
+        T* newData = new T[newCap + 1];
         for(int i = 0; i < count; i++)
         {
             newData[i] = data[(i+head)%capacity];

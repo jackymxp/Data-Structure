@@ -48,7 +48,7 @@ public:
     }
     void addLast(T e)
     {
-        add(e, count);
+        add(count, e);
     }
 
     template<typename T1> 

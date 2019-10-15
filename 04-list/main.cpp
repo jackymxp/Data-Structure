@@ -8,6 +8,11 @@ int main(void)
     for(int i = 0; i < 10; i++) 
         l.addFirst(i);
 
+
+    l.add(1,1000);
+    l.addLast(3000);
+
+    
     cout << l << endl;
 
 

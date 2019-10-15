@@ -1,4 +1,4 @@
-#include "stack.hpp"
+#include "array_stack.hpp"
 
 class Student
 {

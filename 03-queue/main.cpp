@@ -1,5 +1,8 @@
-#include "queue.hpp"
+#include "array_queue.hpp"
 #include "loopqueue.hpp"
+#include <ctime>
+#include <stdlib.h>
+
 class Student
 {
 public:
@@ -72,7 +75,7 @@ void compare(int oc)
     srand(time(NULL));
     clock_t start1 = clock();
     for(int i = 0; i < oc; i++)
-        q1.push(random());
+        q1.push(rand());
     for(int i = 0; i < oc; i++)
         q1.pop();
     clock_t end1 = clock();
@@ -81,7 +84,7 @@ void compare(int oc)
     LoopQueue<int> q2;
     clock_t start2 = clock();
     for(int i = 0; i < oc; i++)
-        q2.push(random());
+        q2.push(rand());
     for(int i = 0; i < oc; i++)
         q2.pop();
     clock_t end2 = clock();
@@ -95,6 +98,6 @@ int main(void)
     cout << "test loopqueue  " << endl; 
     testLoopQueue();
     
-    compare(1000000);
+ //   compare(1000000);
     return 0; 
 }

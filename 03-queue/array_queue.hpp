@@ -4,14 +4,14 @@
 #include "../01-array/array.hpp"
 
 template<typename T>
-class Queue
+class ArrayQueue
 {
 public:
-    Queue(int cap)
+    ArrayQueue(int cap)
     {
         arr = Array<T>(cap);
     }
-    Queue()
+    ArrayQueue()
     {
         arr = Array<T>();
     }
@@ -22,23 +22,16 @@ public:
     T front(){return arr.getFirst();}
     T pop() {return arr.removeFirst();}
     template<typename T1>
-    friend ostream& operator<<(ostream& os, Queue<T1>& s);
+    friend ostream& operator<<(ostream& os, ArrayQueue<T1>& s);
 private:
     Array<T> arr;    
 };
 
 template<typename T>
-ostream& operator<<(ostream& os, Queue<T>& s)
+ostream& operator<<(ostream& os, ArrayQueue<T>& s)
 {
     os << "queue size = " << s.size() << "    queue capacity = " << s.getCapacity() << endl;
-    os << "[";
-    for(int i = 0; i < s.size(); i++)
-    {
-        os << s.arr.get(i);
-        if(i != s.size() - 1)
-            os << ", ";
-    }
-    os << "] top" << endl;
+    os << "front " << s.arr << " tail" << endl;
     return os;
 }
 #endif /* QUEUE_HPP */

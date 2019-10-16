@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cassert>
 
@@ -10,9 +9,10 @@ class List
 private:
     class Node
     {
-    public:
+    private:
         T data;
         Node* next;
+    public:
         Node(T d):data(d), next(NULL) {}
         Node(T d, Node* n):data(d), next(n){}
         Node():next(NULL) {}
@@ -104,7 +104,7 @@ template<typename T>
 ostream& operator<<(ostream& os, List<T>& p)
 {
     os << "size = " << p.count << endl;
-    auto* h = p.dummyHead->next;
+    auto h = p.dummyHead->next;
     while(h)
     {
         if(h->next)

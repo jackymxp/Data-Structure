@@ -113,10 +113,12 @@ public:
         os << "[" ;
         for(int i = 0; i < a.count; i++)
         {
+            
+            os << a.data[i] ;
             if(i != a.count-1)
-                os << a.data[i] << ", " ;
+                os << ", ";
             else
-                os << a.data[i] << "]" << endl;
+                os << "]" << endl;
         }
         return os;
     }

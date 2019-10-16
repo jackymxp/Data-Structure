@@ -28,13 +28,7 @@ template<typename T>
 ostream& operator<<(ostream& os, ArrayStack<T>& s)
 {
     os << "stack size = " << s.size() << "    stack capacity = " << s.getCapacity() << endl;
-    os << "[";
-    for(int i = 0; i < s.size(); i++)
-    {
-        os << s.arr[i];
-        if(i != s.size() - 1)
-            os << ", ";
-    }
-    os << "] top" << endl;
+    os << s.arr;
+    os << "top";
     return os;
 }

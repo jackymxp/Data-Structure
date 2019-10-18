@@ -1,5 +1,5 @@
-#ifndef QUEUE_HPP
-#define QUEUE_HPP
+#ifndef ARR_QUEUE_HPP
+#define ARR_QUEUE_HPP
 
 #include "../01-array/array.hpp"
 
@@ -17,7 +17,7 @@ public:
     }
     int size(){return arr.size();}
     int getCapacity(){return arr.getCapacity();}
-    bool isEmpty(){return arr.size() == 0;}
+    bool empty(){return arr.size() == 0;}
     void push(T e){arr.pushLast(e);}
     T front(){return arr.getFirst();}
     T pop() {return arr.removeFirst();}
@@ -34,4 +34,4 @@ ostream& operator<<(ostream& os, ArrayQueue<T>& s)
     os << "front " << s.arr << " tail" << endl;
     return os;
 }
-#endif /* QUEUE_HPP */
+#endif /* ARR_QUEUE_HPP */

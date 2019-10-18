@@ -1,6 +1,6 @@
 #include "array_queue.hpp"
 #include "list_queue.hpp"
-#include "loopqueue.hpp"
+#include "loop_queue.hpp"
 
 #include <ctime>
 #include <stdlib.h>
@@ -39,7 +39,7 @@ void testArrayQueue()
         s2.push(t);
     }
     cout << s2 << endl;    
-    while(!s2.isEmpty())
+    while(!s2.empty())
     {
         Student ss = s2.front();
         s2.pop();
@@ -64,7 +64,7 @@ void testListQueue()
         s2.push(t);
     }
     cout << s2 << endl;    
-    while(!s2.isEmpty())
+    while(!s2.empty())
     {
         Student ss = s2.front();
         s2.pop();
@@ -89,7 +89,7 @@ void testLoopQueue()
         s2.push(t);
     }
     
-    while(!s2.isEmpty())
+    while(!s2.empty())
     {
         Student ss = s2.front();
         s2.pop();
@@ -128,15 +128,22 @@ void compare(int oc)
 }
 int main(void)
 {
-    cout << "test array_queue " << endl;
-    testArrayQueue();
+  //  cout << "test array_queue " << endl;
+  //  testArrayQueue();
     
     cout << "test list_queue " << endl;
     testListQueue();
     
-    cout << "test loopqueue  " << endl; 
-    testLoopQueue();
+   // cout << "test loopqueue  " << endl; 
+   // testLoopQueue();
     
-    compare(100000);
+  // compare(100000);
+
+
+    ListQueue<int> q;
+    q.push(1);
+    q.pop();
+    q.push(2);
+    cout << q.front() << endl;
     return 0; 
 }

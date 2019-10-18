@@ -36,7 +36,7 @@ public:
     }
     int getCapacity() { return capacity; }
     int size(){return count;}
-    bool isEmpty(){return count == 0;}
+    bool empty(){return count == 0;}
     void add(int index, T e)
     {
         assert(index >= 0 && index <= count);

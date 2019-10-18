@@ -1,3 +1,6 @@
+#ifndef ARR_STACK_HPP
+#define ARR_STACK_HPP
+
 #include "../01-array/array.hpp"
 
 template<typename T>
@@ -14,7 +17,7 @@ public:
     }
     int size(){return arr.size();}
     int getCapacity(){return arr.getCapacity();}
-    bool isEmpty(){return arr.size() == 0;}
+    bool empty(){return arr.size() == 0;}
     void push(T e){arr.pushLast(e);}
     T top(){return arr.getLast();}
     T pop() {return arr.removeLast();}
@@ -32,3 +35,6 @@ ostream& operator<<(ostream& os, ArrayStack<T>& s)
     os << "top";
     return os;
 }
+
+
+#endif /*  ARR_STACK_HPP  */

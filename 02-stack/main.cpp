@@ -38,7 +38,7 @@ void test_array_stack()
     cout << s2 << endl; 
     cout << "--------test pop and top---------" << endl;    
    
-     while(!s2.isEmpty())
+     while(!s2.empty())
     {
         Student ss = s2.top();
         s2.pop();
@@ -68,7 +68,7 @@ void test_list_stack()
     }
     cout << s2 << endl;
     cout << "--------test pop and top---------" << endl;    
-    while(!s2.isEmpty())
+    while(!s2.empty())
     {
         Student ss = s2.top();
         s2.pop();

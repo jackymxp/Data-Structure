@@ -1,3 +1,6 @@
+#ifndef LIST_HPP
+#define LIST_HPP
+
 #include <iostream>
 #include <cassert>
 
@@ -29,7 +32,7 @@ public:
         }
     }
     int size() {return count;}
-    bool isEmpty() {return count == 0;}
+    bool empty() {return count == 0;}
     void addFirst(T e)
     {
         Node* node = new Node(e);
@@ -63,7 +66,7 @@ public:
     friend ostream& operator<<(ostream& os, List<T1>& p);
 };
 
-#if 1
+
 template<typename T>
 ostream& operator<<(ostream& os, List<T>& p)
 {
@@ -79,4 +82,5 @@ ostream& operator<<(ostream& os, List<T>& p)
     }
     return os;
 } 
-#endif
+
+#endif /* DU_LIST_HPP */

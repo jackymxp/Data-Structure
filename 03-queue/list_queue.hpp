@@ -1,3 +1,6 @@
+#ifndef LIST_QUEUE_HPP
+#define LIST_QUEUE_HPP
+
 #include <iostream>
 
 using namespace std;
@@ -36,7 +39,7 @@ public:
         }
     }
     int size(){return count;}
-    bool isEmpty(){return count == 0;}
+    bool empty(){return count == 0;}
     void push(T e)
     {
         if(tail == NULL)
@@ -54,12 +57,16 @@ public:
     
     T front()
     {
-        assert(isEmpty() == false);
+        assert(count > 0);
+        if(head == NULL)
+            cout << "head == NULL " << endl;
+        else 
+            cout << "head != NULL" << endl;
         return head->data;
     }
     T pop()
     {
-        assert(isEmpty() == false);
+        assert(count > 0);
         Node* retNode = head;
         head = head->next;
         T ret = retNode->data;
@@ -87,3 +94,5 @@ ostream& operator<<(ostream& os, ListQueue<T>& s)
     os <<" tail" << endl;
     return os;
 }
+
+#endif /* LIST_QUEUE_HPP */

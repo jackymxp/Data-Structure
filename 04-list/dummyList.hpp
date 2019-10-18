@@ -1,3 +1,6 @@
+#ifndef DU_LIST_HPP
+#define DU_LIST_HPP
+
 #include <iostream>
 #include <cassert>
 
@@ -9,10 +12,9 @@ class List
 private:
     class Node
     {
-    private:
+    public:
         T data;
         Node* next;
-    public:
         Node(T d):data(d), next(NULL) {}
         Node(T d, Node* n):data(d), next(n){}
         Node():next(NULL) {}
@@ -21,7 +23,7 @@ private:
     int count;
 public:
     List():count(0){
-        dummyHead = new Node(-1);
+        dummyHead = new Node();
     }
     ~List() {
         Node* p = dummyHead;
@@ -33,7 +35,7 @@ public:
         }
     }
     int size() {return count;}
-    bool isEmpty() {return count == 0;}
+    bool empty() {return count == 0;}
     
     void add(int index, T e)
     {
@@ -99,7 +101,7 @@ public:
     friend ostream& operator<<(ostream& os, List<T1>& p);
 };
 
-#if 1
+
 template<typename T>
 ostream& operator<<(ostream& os, List<T>& p)
 {
@@ -115,4 +117,4 @@ ostream& operator<<(ostream& os, List<T>& p)
     }
     return os;
 } 
-#endif
+#endif  /* DU_LIST_HPP */

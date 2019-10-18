@@ -1,3 +1,6 @@
+#ifndef LOOP_QUEUE_HPP
+#define LOOP_QUEUE_HPP
+
 #include <iostream>
 
 using namespace std;
@@ -51,7 +54,7 @@ public:
     }
     int getCapacity(){return capacity - 1;}
     int size(){return count;}
-    bool isEmpty(){return head == tail;}
+    bool empty(){return head == tail;}
     void push(T e)
     {
         if((tail+1)%capacity == head)
@@ -62,7 +65,7 @@ public:
     }
     T pop()
     {
-        assert(isEmpty() == false);
+        assert(empty() == false);
         T ret = data[head];
         head = (head + 1) % capacity;
         count--;
@@ -72,7 +75,7 @@ public:
     }
     T front()
     {
-        assert(isEmpty() == false);
+        assert(empty() == false);
         return data[head];
     }
     template<typename T1>
@@ -95,3 +98,4 @@ ostream& operator<<(ostream& os, LoopQueue<T>& s)
 }
 
 
+#endif /*  LOOP_QUEUE_HPP  */

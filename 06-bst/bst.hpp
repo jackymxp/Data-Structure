@@ -4,7 +4,6 @@
 #include "../03-queue/list_queue.hpp"
 #include "../03-queue/array_queue.hpp"
 #include "../03-queue/loop_queue.hpp"
-//#include <queue>
 
 using namespace std;
 
@@ -87,27 +86,20 @@ public:
     }
     void levelOrder()
     {
-        //ListQueue<Node*> q;//不能用
-        ArrayQueue<Node*> q;
-        //LoopQueue<Node*> q;
+        //ListQueue<Node*> q;
+        //ArrayQueue<Node*> q;
+        LoopQueue<Node*> q;
         q.push(root);
-        int i = 0;
-        cout << "========" << q.size() << endl;
         while(!q.empty())
         {
-            cout << "q.size() = " << q.size() << endl;
-            cout << "jinl;ia le" << endl;
             Node* node = q.front();
-            cout << ":hhfdifh" << endl;
             printNode(node);
             q.pop();
-            cout << "size === " << q.size() << endl;
             cout << node->data << "  ";
             if(node->left) 
                 q.push(node->left);
             if(node->right)
                 q.push(node->right);
-            cout << " i = " << i++ << endl;
         }
     }
     T minimum()

@@ -268,7 +268,7 @@ private:
         }
         if(node->data > e)
             node->left = add(node->left, e);
-        else
+        else if(node->data < e)
             node->right = add(node->right, e);
         return node;
     }

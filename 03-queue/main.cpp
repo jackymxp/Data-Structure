@@ -139,7 +139,6 @@ int main(void)
     
   // compare(100000);
 
-
     ListQueue<int> q;
     q.push(1);
     q.pop();

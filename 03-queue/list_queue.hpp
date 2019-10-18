@@ -42,7 +42,7 @@ public:
     bool empty(){return count == 0;}
     void push(T e)
     {
-        if(tail == NULL)
+        if(head == NULL)
         {
             tail = new Node(e);
             head = tail;
@@ -58,10 +58,6 @@ public:
     T front()
     {
         assert(count > 0);
-        if(head == NULL)
-            cout << "head == NULL " << endl;
-        else 
-            cout << "head != NULL" << endl;
         return head->data;
     }
     T pop()

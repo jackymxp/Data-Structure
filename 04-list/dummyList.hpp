@@ -70,7 +70,7 @@ public:
     }
     T setFirst(T e){set(0, e);}
     T setLast(T e){set(count - 1, e);}
-    bool contains(T e)
+    bool contain(T e)
     {
         Node* cur = dummyHead->next;
         while(cur)
@@ -97,6 +97,23 @@ public:
     }
     T removeFirst(){return remove(0);}
     T removeLast(){return remove(count-1);}
+    void removeElement(T e)
+    {
+        Node* p = dummyHead;
+        while(p->next)
+        {
+            if(p->next->data == e)
+                break;
+            p = p->next;
+        }
+        if(p->next)
+        {
+            Node* delNode = p->next;
+            p->next = delNode->next;
+            delete delNode;
+            count--;
+        }
+    }
     template<typename T1> 
     friend ostream& operator<<(ostream& os, List<T1>& p);
 };

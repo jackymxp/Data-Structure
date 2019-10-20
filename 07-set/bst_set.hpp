@@ -18,8 +18,8 @@ public:
     void remove(T e){
         bst.remove(e);
     }
-    void contain(T e){
-        bst.contain(e);
+    bool contain(T e){
+        return bst.contain(e);
     }
     int size(){
         return bst.size();

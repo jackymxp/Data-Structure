@@ -3,4 +3,5 @@
 *.exe
 *.out
 tags
+/.vscode
 .DS_Store

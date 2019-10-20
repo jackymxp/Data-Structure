@@ -1,11 +1,13 @@
 #include "bst_set.hpp"
 #include "list_set.hpp"
 #include "list_map.hpp"
+#include "bst_map.hpp"
 
 #include "file_ops.hpp"
 
 #include <vector>
 #include <set>
+#include <ctime>
 
 int main(void)
 {
@@ -63,7 +65,22 @@ int main(void)
             lmap.add(i, 1);
     }
     clock_t end4 = clock();
-    cout << "lmap takes " << (double)(end4-start4) / CLOCKS_PER_SEC << "  s" << endl;
+    cout << "lmap pride takes " << lmap.get("pride") << "  times" << endl;
     cout << "lmap  count = " << lmap.size() << endl;
+    cout << "lmap  count = " << lmap.size() << endl;
+    
+    BSTMap<string, int> bmap;
+    clock_t start5 = clock();
+    for(auto i : words)
+    {
+        if(bmap.contain(i) == true)
+            bmap.set(i, bmap.get(i)+1);
+        else
+            bmap.add(i, 1);
+    }
+    clock_t end5 = clock();
+    cout << "bmap pride takes " << bmap.get("pride") << "  times" << endl;
+    cout << "bmap takes " << (double)(end5-start5) / CLOCKS_PER_SEC << "  s" << endl;
+    cout << "bmap  count = " << bmap.size() << endl;
     return 0;
 }

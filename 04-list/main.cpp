@@ -10,8 +10,8 @@ int main(void)
 
     cout << l << endl;
 
-    cout << l.contains(1000) << " " << endl;
-    cout << l.contains(11) << " " << endl;
+    cout << l.contain(1000) << " " << endl;
+    cout << l.contain(11) << " " << endl;
     
     l.remove(1);
     cout << l << endl;

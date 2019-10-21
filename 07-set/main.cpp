@@ -15,8 +15,8 @@ int main(void)
 
       // 我们使用文本量更小的共产主义宣言进行试验:)
     //string filename = "communist.txt";
-    //string filename = "pride-and-prejudice.txt";
-    string filename = "a-tale-of-two-cities.txt";
+    string filename = "pride-and-prejudice.txt";
+    //string filename = "a-tale-of-two-cities.txt";
     vector<string> words;
 
 

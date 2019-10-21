@@ -63,12 +63,10 @@ private:
         if(node->k > k)
         {
             node->left = remove(node->left, k);
-            return node;
         }
         else if(node->k < k)
         {
             node->right = remove(node->right, k);
-            return node;
         }
         else if(node->k == k)
         {
@@ -92,6 +90,7 @@ private:
             delete node;
             return successor;
         }
+        return node;
     }
     Node* removeMin(Node* node)
     {

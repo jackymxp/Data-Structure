@@ -18,7 +18,7 @@ public:
     int size(){return arr.size();}
     int getCapacity(){return arr.getCapacity();}
     bool empty(){return arr.size() == 0;}
-    void push(T e){arr.pushLast(e);}
+    void push(T e){arr.addLast(e);}
     T top(){return arr.getLast();}
     T pop() {return arr.removeLast();}
     template<typename T1>

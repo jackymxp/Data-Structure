@@ -48,8 +48,8 @@ public:
         data[index] = e;
         count++;
     }
-    void pushFirst(T e){add(0, e);}
-    void pushLast(T e){add(count, e);}
+    void addFirst(T e){add(0, e);}
+    void addLast(T e){add(count, e);}
     T get(int index)
     {
         assert(index >= 0 && index < count);

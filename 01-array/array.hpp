@@ -101,7 +101,14 @@ public:
         if(index != -1)
             remove(index);
     }
-
+    void swap(int i, int j)
+    {
+        assert(i >= 0 && i < count);
+        assert(j >= 0 && j < count);
+        T t = data[i];
+        data[i] = data[j];
+        data[j] = t;
+    }
     template<typename T1>
     friend ostream& operator<<(ostream& os, Array<T1> a);
 };

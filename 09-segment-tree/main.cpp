@@ -11,5 +11,7 @@ int main(void)
     SegmentTree<int> st(arr, merge);
 
     cout << st << endl;
+
+    cout << st.query(2,5) << endl;
     return 0;
 }

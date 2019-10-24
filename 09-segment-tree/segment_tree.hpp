@@ -45,7 +45,33 @@ public:
         assert(index >= 0 && index < data.size());
         return data[index];
     }
-
+    T query(int queryL, int queryR)
+    {
+        assert(queryL >= 0 && queryL < data.size());
+        assert(queryR >= 0 && queryR < data.size());
+        assert(queryL <= queryR);
+        return query(0, 0, data.size() - 1, queryL, queryR);
+    }
+private:
+    //在index,[left, right]中查找  [queryL, queryR]
+    T query(int index, int left, int right, int queryL, int queryR)
+    {
+        if(left == queryL && right == queryR)
+            return tree[index];
+        int leftIndex = leftChild(index);
+        int rightIndex = rightChild(index);
+        int mid = ((right - left) >> 1) + left;
+        if(queryL >= mid+1)
+            return query(rightIndex, mid+1, right, queryL, queryR);
+        else if(queryR <= mid)
+            return query(leftIndex, left, mid, queryL, queryR);
+        else
+        {
+            T leftRes = query(leftIndex, left, mid, queryL, mid);
+            T rightRes = query(rightIndex, mid+1, right, mid+1, queryR);
+            return merge(leftRes, rightRes);
+        }
+    }
     template<typename T1>
     friend ostream& operator<<(ostream&os, SegmentTree<T1>& st);
 };

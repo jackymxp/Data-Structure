@@ -13,15 +13,15 @@ private:
     vector<T> tree;
     inline int leftChild(int index){return index * 2 + 1;}
     inline int rightChild(int index){return index * 2 + 2;}
-    void buildSegmentTree(int index, int left, int right)
+    void buildSegmentTree(int treeIndex, int left, int right)
     {
         if(left == right)
         {
-            tree[index] = data[left];
+            tree[treeIndex] = data[left];
             return;
         }
-        int leftIndex = leftChild(index);
-        int rightIndex = rightChild(index);
+        int leftIndex = leftChild(treeIndex);
+        int rightIndex = rightChild(treeIndex);
         
         int mid = ((right - left) >> 1) + left;
         //[left, mid]
@@ -29,7 +29,7 @@ private:
         buildSegmentTree(leftIndex, left, mid);
         buildSegmentTree(rightIndex, mid +1, right);
 
-        tree[index] = merge(tree[leftIndex], tree[rightIndex]);
+        tree[treeIndex] = merge(tree[leftIndex], tree[rightIndex]);
     }
 public:
     SegmentTree(vector<T> arr, T (*merge)(T, T))
@@ -37,11 +37,7 @@ public:
         data = arr;
         tree = vector<T>(4 * arr.size(), NULL); //使用线段树，需要开4倍的空间
         this->merge = merge;
-        buildSegmentTree(0, 0, arr.size() - 1);
-        cout << "segment in tree" << endl;
-        for(auto i : tree)
-            cout << i << "  ";
-        
+        buildSegmentTree(0, 0, arr.size() - 1);        
     }
     int size(){return data.size();}
     T get(int index)
@@ -58,31 +54,28 @@ public:
     }
     void set(int index, T e)
     {
-#if 0
-        cout << "index = " << index << "e = " << e << endl;
+        //cout << "index = " << index << "e = " << e << endl;
         assert(index >= 0 && index < data.size());
-        set(0, 0, data.size() - 1, index, e);
-        cout << "set in tree" << endl;
-        for(auto i : tree)
-            cout << i << "  ";
-#endif
         data[index] = e;
-        buildSegmentTree(0, 0, data.size() - 1);
+        set(0, 0, data.size() - 1, index, e);
     }
 private:
     void set(int treeIndex, int left, int right, int index, T e)
     {
+        cout << "treeIndex = " << treeIndex << "  left = " << left << "  right = " << right << "  index = " << index << " e = " << e;
         if(left == right)
         {
             tree[treeIndex] = e;
             return ;
         }
         int mid = ((right - left) >> 1) + left;
-        int leftIndex = leftChild(index);
-        int rightIndex = rightChild(index);
+        int leftIndex = leftChild(treeIndex);
+        int rightIndex = rightChild(treeIndex);
+        cout << "  mid = " << mid << "  leftIndex = " << treeIndex << "  rightIndex = " << rightIndex <<  endl;
+
         if(index >= mid + 1)
             set(rightIndex, mid + 1, right, index, e);
-        else if(index <= mid)
+        else //if(index <= mid)
             set(leftIndex, left, mid, index, e);
         tree[treeIndex] = merge(tree[leftIndex], tree[rightIndex]);
     }
@@ -113,7 +106,16 @@ private:
     template<typename T>
     ostream& operator<<(ostream&os, SegmentTree<T>& st)
     {
-        os << "[";
+        os << "data :  [";
+        for(int i = 0; i < st.data.size(); i++)
+        {
+            os << st.data[i] ;
+            if(i != st.data.size() - 1)
+                os << ",  ";
+        }
+        os << "]" << endl;
+
+        os << "tree :  [";
         for(int i = 0; i < st.tree.size(); i++)
         {
             if(st.tree[i] == NULL)
@@ -123,6 +125,6 @@ private:
             if(i != st.tree.size() - 1)
                 os << ",  ";
         }
-        os << "]";
+        os << "]" << endl;
         return os;
     }

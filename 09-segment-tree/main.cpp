@@ -7,7 +7,7 @@ int merge(int a, int b)
 }
 int main(void)
 {
-    vector<int> arr {1,2,3,4,5,6,7};
+    vector<int> arr {0,1,2,3,4,5,6,7};
     SegmentTree<int> st(arr, merge);
 
     cout << st << endl;
@@ -16,5 +16,6 @@ int main(void)
 
     st.set(3, 8) ;
     cout << st.query(2, 5) << endl;
+    cout << st << endl;
     return 0;
 }

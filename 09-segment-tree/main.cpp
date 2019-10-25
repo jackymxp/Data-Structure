@@ -13,5 +13,8 @@ int main(void)
     cout << st << endl;
 
     cout << st.query(2,5) << endl;
+
+    st.set(3, 8) ;
+    cout << st.query(2, 5) << endl;
     return 0;
 }

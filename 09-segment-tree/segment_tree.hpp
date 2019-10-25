@@ -38,6 +38,10 @@ public:
         tree = vector<T>(4 * arr.size(), NULL); //使用线段树，需要开4倍的空间
         this->merge = merge;
         buildSegmentTree(0, 0, arr.size() - 1);
+        cout << "segment in tree" << endl;
+        for(auto i : tree)
+            cout << i << "  ";
+        
     }
     int size(){return data.size();}
     T get(int index)
@@ -52,7 +56,36 @@ public:
         assert(queryL <= queryR);
         return query(0, 0, data.size() - 1, queryL, queryR);
     }
+    void set(int index, T e)
+    {
+#if 0
+        cout << "index = " << index << "e = " << e << endl;
+        assert(index >= 0 && index < data.size());
+        set(0, 0, data.size() - 1, index, e);
+        cout << "set in tree" << endl;
+        for(auto i : tree)
+            cout << i << "  ";
+#endif
+        data[index] = e;
+        buildSegmentTree(0, 0, data.size() - 1);
+    }
 private:
+    void set(int treeIndex, int left, int right, int index, T e)
+    {
+        if(left == right)
+        {
+            tree[treeIndex] = e;
+            return ;
+        }
+        int mid = ((right - left) >> 1) + left;
+        int leftIndex = leftChild(index);
+        int rightIndex = rightChild(index);
+        if(index >= mid + 1)
+            set(rightIndex, mid + 1, right, index, e);
+        else if(index <= mid)
+            set(leftIndex, left, mid, index, e);
+        tree[treeIndex] = merge(tree[leftIndex], tree[rightIndex]);
+    }
     //在index,[left, right]中查找  [queryL, queryR]
     T query(int index, int left, int right, int queryL, int queryR)
     {
@@ -72,6 +105,7 @@ private:
             return merge(leftRes, rightRes);
         }
     }
+
     template<typename T1>
     friend ostream& operator<<(ostream&os, SegmentTree<T1>& st);
 };

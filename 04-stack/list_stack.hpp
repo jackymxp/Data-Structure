@@ -1,7 +1,7 @@
 #ifndef LIST_STACK
 #define LIST_STACK
 
-#include "../04-list/dummyList.hpp"
+#include "../02-list/dummyList.hpp"
 
 template<typename T>
 class ListStack

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../02-stack/list_stack.hpp"
-#include "../02-stack/array_stack.hpp"
+#include "../04-stack/list_stack.hpp"
+#include "../04-stack/array_stack.hpp"
 #include "../03-queue/list_queue.hpp"
 #include "../03-queue/array_queue.hpp"
 #include "../03-queue/loop_queue.hpp"

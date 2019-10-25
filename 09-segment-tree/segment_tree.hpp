@@ -77,6 +77,7 @@ private:
             set(rightIndex, mid + 1, right, index, e);
         else //if(index <= mid)
             set(leftIndex, left, mid, index, e);
+        //类似树中的后续操作
         tree[treeIndex] = merge(tree[leftIndex], tree[rightIndex]);
     }
     //在index,[left, right]中查找  [queryL, queryR]

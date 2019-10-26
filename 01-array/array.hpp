@@ -63,7 +63,7 @@ public:
         assert(index >= 0 && index < count);
         return data[index];
     }
-    T operator[](int index)
+    T& operator[](int index)
     {
         assert(index >= 0 && index < count);
         return data[index];

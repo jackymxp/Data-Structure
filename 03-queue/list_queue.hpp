@@ -2,11 +2,12 @@
 #define LIST_QUEUE_HPP
 
 #include <iostream>
+#include "queue.hpp"
 
 using namespace std;
 
 template<typename T>
-class ListQueue
+class ListQueue : public Queue<T> 
 {
 private:
     class Node

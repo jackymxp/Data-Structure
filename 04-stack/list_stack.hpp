@@ -2,9 +2,10 @@
 #define LIST_STACK
 
 #include "../02-list/dummyList.hpp"
+#include "stack.hpp"
 
 template<typename T>
-class ListStack
+class ListStack : public Stack<T> 
 {
 public:
     int size(){return l.size();}

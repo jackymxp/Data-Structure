@@ -2,9 +2,10 @@
 #define ARR_QUEUE_HPP
 
 #include "../01-array/array.hpp"
+#include "queue.hpp"
 
 template<typename T>
-class ArrayQueue
+class ArrayQueue : public Queue<T>
 {
 public:
     ArrayQueue(int cap)

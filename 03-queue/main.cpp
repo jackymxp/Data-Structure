@@ -10,139 +10,88 @@ class Student
 public:
     Student(){age = 10;score = 10;}
     Student(int age, int score):age(age), score(score){}
+    bool operator==(const Student& other)
+    {
+        return this->age == other.age && this->score == other.score;
+    }
     friend ostream& operator<<(ostream& os, Student& s);
 private:
     int age;
     int score;
 };
+
 ostream& operator<<(ostream& os, Student& s)
-{
+{  
     os << "age = " << s.age << "  score = " << s.score << endl;
     return os;
 }
 
-void testArrayQueue()
+
+
+template<typename T>
+void testQueue(Queue<T>* s, string queueName, int oc)
 {
-    ArrayQueue<int> q1;
-    for(int i = 0; i < 20; i++)
-        q1.push(i);
-
-    cout << q1 << endl;
-    cout << q1.front() << endl;
-    cout << q1.pop() << endl;
-    cout << q1 << endl;
-
-    ArrayQueue<Student> s2;
-    for(int i = 0; i < 50; i++)
+    cout << "start test " << queueName << endl;
+    for(int i = 0; i < oc; i++)
     {   
-        Student t(i, i*10);
-        s2.push(t);
+        Student t(i, i);
+        cout << "push   " << t << endl;
+        s->push(t);
     }
-    cout << s2 << endl;    
-    while(!s2.empty())
+    cout << "--------test pop and top---------" << endl;    
+    while(!s->empty())
     {
-        Student ss = s2.front();
-        s2.pop();
-        cout << ss << endl;
+        Student ss = s->front();
+        assert(ss == s->pop());
+        cout << "pop   " << ss << endl;
     }
+    cout << "test " << queueName << "successed !" << endl;
 }
-void testListQueue()
+
+template<typename T>
+void compareQueue(Queue<T>*q, string queueName, int oc)
 {
-    ListQueue<int> q1;
-    for(int i = 0; i < 20; i++)
-        q1.push(i);
-
-    cout << q1 << endl;
-    cout << q1.front() << endl;
-    cout << q1.pop() << endl;
-    cout << q1 << endl;
-
-    ListQueue<Student> s2;
-    for(int i = 0; i < 50; i++)
-    {   
-        Student t(i, i*10);
-        s2.push(t);
-    }
-    cout << s2 << endl;    
-    while(!s2.empty())
-    {
-        Student ss = s2.front();
-        s2.pop();
-        cout << ss << endl;
-    }
-}
-void testLoopQueue()
-{
-    LoopQueue<int> q1;
-    for(int i = 0; i < 20; i++)
-        q1.push(i);
-
-    cout << q1 << endl;
-    cout << q1.front() << endl;
-    cout << q1.pop() << endl;
-    cout << q1 << endl;
-
-    LoopQueue<Student> s2;
-    for(int i = 0; i < 50; i++)
-    {   
-        Student t(i, i*10);
-        s2.push(t);
-    }
-    
-    while(!s2.empty())
-    {
-        Student ss = s2.front();
-        s2.pop();
-        cout << ss << endl;
-    }
-}
-void compare(int oc)
-{
-    ArrayQueue<int> q1;
     srand(time(NULL));
     clock_t start1 = clock();
     for(int i = 0; i < oc; i++)
-        q1.push(rand());
+        q->push(rand());
     for(int i = 0; i < oc; i++)
-        q1.pop();
+        q->pop();
+    assert(q->size() == 0);
+    assert(q->empty() == true);
     clock_t end1 = clock();
-    cout << "array_queue take " << (double)(end1 - start1) / CLOCKS_PER_SEC << " s  "  << endl;
-    
-    LoopQueue<int> q2;
-    clock_t start2 = clock();
-    for(int i = 0; i < oc; i++)
-        q2.push(rand());
-    for(int i = 0; i < oc; i++)
-        q2.pop();
-    clock_t end2 = clock();
-    cout << "loopqueue take " << (double)(end2 - start2) / CLOCKS_PER_SEC << " s  "  << endl;
-    
-    ListQueue<int> q3;
-    clock_t start3 = clock();
-    for(int i = 0; i < oc; i++)
-        q3.push(rand());
-    for(int i = 0; i < oc; i++)
-        q3.pop();
-    clock_t end3 = clock();
-    cout << "list_queue take " << (double)(end3 - start3) / CLOCKS_PER_SEC << " s  "  << endl;
+    cout << queueName << "  take " << (double)(end1 - start1) / CLOCKS_PER_SEC << " s  "  << endl;
 }
 int main(void)
 {
-  //  cout << "test array_queue " << endl;
-  //  testArrayQueue();
-    
-    cout << "test list_queue " << endl;
-    testListQueue();
-    
-   // cout << "test loopqueue  " << endl; 
-   // testLoopQueue();
-    
-  // compare(100000);
 
-    ListQueue<int> q;
-    q.push(1);
-    q.pop();
-    q.push(2);
-    cout << q.front() << endl;
+    cout << "test queue " << endl;
+    Queue<Student>* q1;
+    int size = 10;
+
+
+    q1 = new ArrayQueue<Student>;
+    testQueue(q1, "ArrayQueue", size);
+
+    q1 = new ListQueue<Student>;
+    testQueue(q1, "ListQueue", size);
+
+    q1 = new LoopQueue<Student>;
+    testQueue(q1, "LoopQueue", size);
+
+
+
+    Queue<int>* q2;
+    size = 100000;
+
+    q2 = new ArrayQueue<int>;
+    compareQueue(q2, "ArrayQueue", size);
+
+    q2 = new ListQueue<int>;
+    compareQueue(q2, "ListQueue", size);
+
+    q2 = new LoopQueue<int>;
+    compareQueue(q2, "LoopQueue", size);
+    
     return 0; 
 }

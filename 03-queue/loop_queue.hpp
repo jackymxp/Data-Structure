@@ -2,11 +2,11 @@
 #define LOOP_QUEUE_HPP
 
 #include <iostream>
-
+#include "queue.hpp"
 using namespace std;
 
 template<typename T>
-class LoopQueue
+class LoopQueue : public Queue<T>
 {
 private:
     T* data;

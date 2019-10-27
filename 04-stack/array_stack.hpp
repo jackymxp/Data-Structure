@@ -2,9 +2,9 @@
 #define ARR_STACK_HPP
 
 #include "../01-array/array.hpp"
-
+#include "stack.hpp"
 template<typename T>
-class ArrayStack
+class ArrayStack : public Stack<T>
 {
 public:
     ArrayStack(int cap)

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cassert>
 
 using namespace std;
 
@@ -62,7 +63,6 @@ public:
 private:
     void set(int treeIndex, int left, int right, int index, T e)
     {
-        cout << "treeIndex = " << treeIndex << "  left = " << left << "  right = " << right << "  index = " << index << " e = " << e;
         if(left == right)
         {
             tree[treeIndex] = e;
@@ -71,7 +71,6 @@ private:
         int mid = ((right - left) >> 1) + left;
         int leftIndex = leftChild(treeIndex);
         int rightIndex = rightChild(treeIndex);
-        cout << "  mid = " << mid << "  leftIndex = " << treeIndex << "  rightIndex = " << rightIndex <<  endl;
 
         if(index >= mid + 1)
             set(rightIndex, mid + 1, right, index, e);

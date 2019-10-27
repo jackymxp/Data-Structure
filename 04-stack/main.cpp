@@ -1,6 +1,6 @@
 #include "array_stack.hpp"
 #include "list_stack.hpp"
-
+#include <ctime>
 class Student
 {
 public:

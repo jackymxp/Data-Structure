@@ -1,4 +1,5 @@
 #include "bst.hpp"
+#include <ctime>
 
 int main(void)
 {

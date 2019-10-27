@@ -1,3 +1,6 @@
+#ifndef _AVL_TREE_H_
+#define _AVL_TREE_H_
+
 #include <iostream>
 #include <vector>
 
@@ -384,3 +387,5 @@ private:
         destroy(node);
     }
 };
+
+#endif 

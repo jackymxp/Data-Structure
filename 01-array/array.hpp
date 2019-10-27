@@ -34,6 +34,14 @@ public:
         capacity = 10;
         data = new T[capacity];
     }
+    Array(int cap, T e)
+    {
+        count = cap;
+        capacity = cap;
+        data = new T[capacity];
+        for(int i = 0; i < cap; i++)
+            data[i] = e;
+    }
     int getCapacity() { return capacity; }
     int size(){return count;}
     bool empty(){return count == 0;}
@@ -55,7 +63,7 @@ public:
         assert(index >= 0 && index < count);
         return data[index];
     }
-    T operator[](int index)
+    T& operator[](int index)
     {
         assert(index >= 0 && index < count);
         return data[index];

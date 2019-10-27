@@ -3,22 +3,23 @@
 
 #include <iostream>
 #include "../06-bst/bst.hpp"
+#include "set.hpp"
 
 using namespace std;
 
-template<typename T>
-class BSTSet
+template<typename K>
+class BSTSet : public Set<K>
 {
 private:
-    BST<T> bst;
+    BST<K> bst;
 public:
-    void add(T e){
+    void add(K e){
         bst.add(e);
     }
-    void remove(T e){
+    void remove(K e){
         bst.remove(e);
     }
-    bool contain(T e){
+    bool contain(K e){
         return bst.contain(e);
     }
     int size(){

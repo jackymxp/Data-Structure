@@ -1,9 +1,10 @@
 #include <iostream>
+#include "map.hpp"
 
 using namespace std;
 
 template<typename K, typename V>
-class BSTMap
+class BSTMap : public Map<K, V>
 {
 private:
     class Node

@@ -1,12 +1,12 @@
 #include "../02-list/dummyList.hpp"
-
+#include "set.hpp"
 template<typename T>
-class ListSet
+class ListSet : public Set<T>
 {
 private:
     List<T> l;
 public:
-    void empty(){return l.empty();}
+    bool empty(){return l.empty();}
     int size() {return l.size();}
     bool contain(T e){return l.contain(e);}
 

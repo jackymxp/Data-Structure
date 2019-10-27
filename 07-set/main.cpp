@@ -1,7 +1,9 @@
-#include "bst_set.hpp"
 #include "list_set.hpp"
 #include "list_map.hpp"
+#include "bst_set.hpp"
 #include "bst_map.hpp"
+#include "avl_set.hpp"
+#include "avl_map.hpp"
 
 #include "file_ops.hpp"
 
@@ -9,78 +11,96 @@
 #include <set>
 #include <ctime>
 
+
+vector<string> words;
+
+
+template<typename T>
+void testSet(Set<T>* s, string setName)
+{
+    clock_t start1 = clock();
+
+    for(auto i : words)
+        s->add(i);
+        
+    for(auto i : words)
+        assert(s->contain(i) == true);
+    
+    for(int i = 0; i < 10; i++)
+        s->remove(words[i]);
+    ///assert(s->size() == 0);
+    ///assert(s->empty() == true);
+
+    clock_t end1 = clock();
+    cout << setName << " takes " << (double)(end1-start1) / CLOCKS_PER_SEC << "  s" << endl;
+    cout << setName << " count = " << s->size() << endl;
+    cout << "=================================================" << endl;
+}
+
+template<typename K, typename V>
+void testMap(Map<K, V>* s, string mapName)
+{
+    clock_t start1 = clock();
+
+    for(auto i : words)
+    {
+        if(s->contain(i) == true)
+            s->set(i, s->get(i)+1);
+        else
+            s->add(i, 1);
+    }
+
+    for(auto i : words)
+        assert(s->contain(i) == true);
+
+    for(int i = 0; i < 30; i++)
+        s->remove("words[i]");
+    ///assert(s->size() == 0);
+    ///assert(s->empty() == true);
+
+    clock_t end1 = clock();
+    cout << mapName << " takes " << (double)(end1-start1) / CLOCKS_PER_SEC << "  s" << endl;
+    cout << mapName << " count = " << s->size() << endl;
+    cout << "#################################################" << endl;
+
+}
 int main(void)
 {
-    cout << "test bst_set_hpp" << endl;
 
-      // 我们使用文本量更小的共产主义宣言进行试验:)
+    // 我们使用文本量更小的共产主义宣言进行试验:)
     //string filename = "communist.txt";
     string filename = "pride-and-prejudice.txt";
     //string filename = "a-tale-of-two-cities.txt";
-    vector<string> words;
-
 
     if( FileOps::readFile(filename, words) ) { 
         cout << "words size = " << words.size() << endl;
     }
 
-    BSTSet<string> bset;
-    ListSet<string> lset;
-    set<string> s;
-    clock_t start1 = clock();
-    for(auto i : words)
-    {
-        s.insert(i);
-    }
-    clock_t end1 = clock();
-    cout << "set takes " << (double)(end1-start1) / CLOCKS_PER_SEC << "  s" << endl;
-    cout << "s count = " << s.size() << endl;
 
-    clock_t start2 = clock();
-    for(auto i : words)
-    {
-        bset.add(i);
-    }
-    clock_t end2 = clock();
-    cout << "bset takes " << (double)(end2-start2) / CLOCKS_PER_SEC << "  s" << endl;
-    cout << "bset count = " << bset.size() << endl;
+    Set<string>* s;
+
+    //s = new ListSet<string>;
+    //testSet(s, "ListSet");
+
+    s = new BSTSet<string>;
+    testSet(s, "BSTSet");
+
+    s = new AVLSet<string>;
+    testSet(s, "AVLSet");
+
+
+    Map<string, int>* m;
+
+    //m = new ListMap<string, int>;
+    //testMap(m, "ListMap");
+
+    m = new BSTMap<string, int>;
+    testMap(m, "BSTMap");
+
+    m = new AVLMap<string, int>;
+    testMap(m, "AVLMap");
     
-    clock_t start3 = clock();
-    for(auto i : words)
-    {
-        lset.add(i);
-    }
-    clock_t end3 = clock();
-    cout << "lset takes " << (double)(end3-start3) / CLOCKS_PER_SEC << "  s" << endl;
-    cout << "lset count = " << lset.size() << endl;
 
 
-    ListMap<string, int> lmap;
-    clock_t start4 = clock();
-    for(auto i : words)
-    {
-        if(lmap.contain(i) == true)
-            lmap.set(i, lmap.get(i)+1);
-        else
-            lmap.add(i, 1);
-    }
-    clock_t end4 = clock();
-    cout << "lmap pride takes " << lmap.get("pride") << "  times" << endl;
-    cout << "lmap  count = " << lmap.size() << endl;
-    cout << "lmap  count = " << lmap.size() << endl;
-    
-    BSTMap<string, int> bmap;
-    clock_t start5 = clock();
-    for(auto i : words)
-    {
-        if(bmap.contain(i) == true)
-            bmap.set(i, bmap.get(i)+1);
-        else
-            bmap.add(i, 1);
-    }
-    clock_t end5 = clock();
-    cout << "bmap pride takes " << bmap.get("pride") << "  times" << endl;
-    cout << "bmap takes " << (double)(end5-start5) / CLOCKS_PER_SEC << "  s" << endl;
-    cout << "bmap  count = " << bmap.size() << endl;
     return 0;
 }

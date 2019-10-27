@@ -1,12 +1,13 @@
-#ifndef MAP_HPP
-#define MAP_HPP
+#ifndef LIST_MAP_H_
+#define LIST_MAP_H_
 
 #include <iostream>
+#include "map.hpp"
 
 using namespace std;
 
 template<typename K, typename V>
-class ListMap
+class ListMap : public Map<K, V>
 {
 private:
     class Node
@@ -67,7 +68,7 @@ public:
         if(node != nullptr)
             node->v = v;
     }
-    V remoev(K k)
+    V remove(K k)
     {
         Node* prev = dummyHead;
         while(prev->next)
@@ -98,4 +99,4 @@ public:
 };
 
 
-#endif /* MAP_HPP */
+#endif /* LIST_MAP_H_ */

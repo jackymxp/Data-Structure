@@ -51,7 +51,7 @@ public:
         if(node != NULL)
         {
             root = remove(root, k);
-            return node->value;
+            return node->v;
         }
         return NULL;
     }
@@ -108,7 +108,7 @@ private:
     {
         if(node->left == NULL)
             return node;
-        return minimum(node->lefe);
+        return minimum(node->left);
     }
     Node* getNode(Node* node, K k)
     {

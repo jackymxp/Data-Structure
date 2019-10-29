@@ -4,13 +4,14 @@
 #include "bst_map.hpp"
 #include "avl_set.hpp"
 #include "avl_map.hpp"
-
+#include "rbtree_map.hpp"
+#include "rbtree_set.hpp"
 #include "file_ops.hpp"
 
 #include <vector>
 #include <set>
 #include <ctime>
-
+#include <algorithm>
 
 vector<string> words;
 
@@ -76,6 +77,7 @@ int main(void)
         cout << "words size = " << words.size() << endl;
     }
 
+   // sort(words.begin(), words.end());
 
     Set<string>* s;
 
@@ -83,10 +85,13 @@ int main(void)
     //testSet(s, "ListSet");
 
     s = new BSTSet<string>;
-    testSet(s, "BSTSet");
+   // testSet(s, "BSTSet");
 
     s = new AVLSet<string>;
     testSet(s, "AVLSet");
+
+    s = new RBTreeSet<string>;
+    testSet(s, "RBTreeSet");
 
 
     Map<string, int>* m;
@@ -95,12 +100,13 @@ int main(void)
     //testMap(m, "ListMap");
 
     m = new BSTMap<string, int>;
-    testMap(m, "BSTMap");
+  //  testMap(m, "BSTMap");
 
     m = new AVLMap<string, int>;
     testMap(m, "AVLMap");
     
-
+    m = new RBTreeMap<string, int>;
+    testMap(m, "RBTreeMap");
 
     return 0;
 }

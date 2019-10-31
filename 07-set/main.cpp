@@ -6,6 +6,9 @@
 #include "avl_map.hpp"
 #include "rbtree_map.hpp"
 #include "rbtree_set.hpp"
+
+#include "hash_map.hpp"
+
 #include "file_ops.hpp"
 
 #include <vector>
@@ -108,5 +111,7 @@ int main(void)
     m = new RBTreeMap<string, int>;
     testMap(m, "RBTreeMap");
 
+    m = new HashTableMap<string, int>();
+    testMap(m, "HashTableMap");
     return 0;
 }

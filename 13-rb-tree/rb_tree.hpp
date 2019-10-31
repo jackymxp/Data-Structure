@@ -110,6 +110,7 @@ private:
             delete node;
             return successor;
         }
+        return node;
     }
 
     Node* getNode(Node* node, K key)

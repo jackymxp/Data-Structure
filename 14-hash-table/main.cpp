@@ -1,6 +1,5 @@
 #include "hash_table.hpp"
 #include "file_ops.hpp"
-
 #include <ctime>
 
 vector<string> words;

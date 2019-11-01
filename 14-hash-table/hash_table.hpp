@@ -12,12 +12,15 @@ template <typename K, typename V>
 class HashTable
 {
 private:
+    int capacity[26] = {53, 97, 193, 389, 769, 1543, 3079, 6151, 12289, 24593,
+            49157, 98317, 196613, 393241, 786433, 1572869, 3145739, 6291469,
+            12582917, 25165843, 50331653, 100663319, 201326611, 402653189, 805306457, 1610612741};
     vector<map<K, V>> hashtable;
     int M; //选择一个合适的size;
     int count;
     static const int upperTol = 10;
     static const int lowerTol = 2;
-    static const int initCapacity = 7;
+    int capacityIndex = 0;
     int hash(string key)
     {
         int hash = 0;
@@ -51,8 +54,8 @@ public:
     HashTable(int M) : M(M), count(0) { 
         hashtable = vector<map<K, V>>(M);
     }
-    HashTable() : M(initCapacity), count(0) { 
-        hashtable = vector<map<K, V>>(M);
+    HashTable() : M(capacity[capacityIndex]), count(0) { 
+        hashtable = vector<map<K, V>>(capacity[capacityIndex]);
 
     }
     int size(){ return count; }
@@ -69,8 +72,13 @@ public:
             //mapping[key] = value;
             mapping.insert(make_pair(key, value));
             count++;
-            if(count >= upperTol * M)
-                resize(2*M);
+            if(count >= upperTol * M && capacityIndex + 1 < sizeof(capacity) / sizeof(capacity[0]))
+            {
+                //resize(2*M);
+                capacityIndex++;
+                resize(capacity[capacityIndex]);
+            }
+                
         }
         else
         {
@@ -86,8 +94,12 @@ public:
             ret = mapping[key];
             mapping.erase(key);
             count--;
-            if(count < lowerTol * M && M / 2 >= initCapacity)
-                resize(M / 2);
+            if(count < lowerTol * M && capacityIndex - 1 >= 0)
+            {
+                //resize(M / 2);
+                resize(capacity[capacityIndex]);
+            }
+
         }
         return ret;
     }

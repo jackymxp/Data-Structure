@@ -14,8 +14,8 @@ public:
     bool contain(K key){return rb_tree.contain(key);}
     V get(K key){return rb_tree.get(key);}
     void set(K key, V value){rb_tree.set(key, value);}
-    int size(){return rb_tree.size();}
-    bool empty(){return rb_tree.empty();}
+    int size() const {return rb_tree.size();}
+    bool empty() const {return rb_tree.empty();}
 };
 
 

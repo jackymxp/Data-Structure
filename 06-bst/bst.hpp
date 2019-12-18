@@ -46,8 +46,8 @@ public:
     {
         destroy(root);
     }
-    int size() {return count;}
-    int empty(){return count == 0;}
+    int size() const {return count;}
+    int empty() const {return count == 0;}
     void add(T e)
     {
         root = add(root, e);

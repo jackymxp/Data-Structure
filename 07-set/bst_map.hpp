@@ -25,8 +25,8 @@ public:
     {
         destroy(root);
     }
-    int size(){return count;}
-    bool empty(){return count == 0;}
+    int size() const {return count;}
+    bool empty() const {return count == 0;}
     void add(K k, V v)
     {
         root = add(root, k, v);

@@ -26,8 +26,8 @@ public:
     bool contain(K key){return hash_map.contain(key);}
     V get(K key){return hash_map.get(key);}
     void set(K key, V value){hash_map.set(key, value);}
-    int size(){return hash_map.size();}
-    bool empty(){return hash_map.empty();}
+    int size() const {return hash_map.size();}
+    bool empty() const {return hash_map.empty();}
 };
 
 

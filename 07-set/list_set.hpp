@@ -6,8 +6,8 @@ class ListSet : public Set<T>
 private:
     List<T> l;
 public:
-    bool empty(){return l.empty();}
-    int size() {return l.size();}
+    bool empty() const {return l.empty();}
+    int size() const {return l.size();}
     bool contain(T e){return l.contain(e);}
 
     void add(T e)

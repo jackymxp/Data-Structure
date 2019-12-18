@@ -21,7 +21,7 @@ public:
         root = new Node();
         count = 0;
     }
-    int size(){return count;}
+    int size() const{return count;}
     void add(string word)
     {
         Node* cur = root;

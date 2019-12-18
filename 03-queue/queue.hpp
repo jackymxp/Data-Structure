@@ -5,8 +5,8 @@ template <typename T>
 class Queue
 {
 public:
-    virtual int size() = 0;
-    virtual bool empty() = 0;
+    virtual int size() const  = 0;
+    virtual bool empty() const  = 0;
     virtual void push(T e) = 0;
     virtual T front() = 0;
     virtual T pop() = 0;

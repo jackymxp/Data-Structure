@@ -12,8 +12,8 @@ private:
 public:
     RBTreeSet(){}
     ~RBTreeSet(){}
-    int size() { return rb_tree.size(); }
-    bool empty() { return rb_tree.empty(); }
+    int size() const { return rb_tree.size(); }
+    bool empty() const { return rb_tree.empty(); }
 
     void add(K key){rb_tree.add(key, key);}
     void remove(K key){rb_tree.remove(key);}

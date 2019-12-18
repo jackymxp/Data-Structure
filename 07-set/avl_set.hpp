@@ -9,8 +9,8 @@ private:
 public:
     AVLSet(){}
     ~AVLSet(){}
-    int size() { return atree.size(); }
-    bool empty() { return atree.empty(); }
+    int size() const { return atree.size(); }
+    bool empty() const  { return atree.empty(); }
 
     void add(K key){atree.add(key, key);}
     void remove(K key){atree.remove(key);}

@@ -20,8 +20,8 @@ public:
     bool contain(K key){return atree.contain(key);}
     V get(K key){return atree.get(key);}
     void set(K key, V value){atree.set(key, value);}
-    int size(){return atree.size();}
-    bool empty(){return atree.empty();}
+    int size() const {return atree.size();}
+    bool empty() const {return atree.empty();}
 };
 
 

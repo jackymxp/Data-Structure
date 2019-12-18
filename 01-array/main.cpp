@@ -40,4 +40,11 @@ int main(void)
     cout << s << endl;
     Student t = s[0];
     cout << t << endl;
+
+    const Array<int> b;
+    cout << b.size() << endl;
+    cout << b.empty() << endl;
+
+
+
 }

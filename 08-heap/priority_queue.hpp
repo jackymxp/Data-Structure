@@ -6,8 +6,8 @@ class PriQueue
 private:
     MaxHeap<T> mp;
 public:
-    int size(){return mp.size();}
-    bool empty(){return mp.empty();}
+    int size() const {return mp.size();}
+    bool empty() const {return mp.empty();}
     T front(){return mp.findMax();}
     void push(T e){mp.add(e);}
     T pop(){return mp.extractMax();}

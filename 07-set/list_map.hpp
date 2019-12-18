@@ -88,8 +88,8 @@ public:
         return NULL;
     }
     bool contain(K k){return getNode(k) != nullptr;}
-    bool empty(){return count == 0;}
-    int size(){return count;}
+    bool empty() const {return count == 0;}
+    int size() const {return count;}
     V get(K k)
     {
         Node* node = getNode(k);

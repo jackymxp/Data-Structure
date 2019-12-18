@@ -4,8 +4,8 @@
 template<typename K, typename V>
 class Map {
 public:
-    virtual bool empty() = 0;
-    virtual int size() = 0;
+    virtual bool empty() const = 0;
+    virtual int size() const  = 0;
     virtual void add(K key, V value) = 0;
     virtual bool contain(K key) = 0;
     virtual V get(K key) = 0;

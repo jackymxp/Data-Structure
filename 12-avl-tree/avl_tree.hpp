@@ -24,8 +24,8 @@ private:
 public:
     AVLTree() : root(NULL), count(0){}
     ~AVLTree(){destroy(root);}
-    int size() const{return count;}
-    bool empty(){return count == 0;}
+    int size() const {return count;}
+    bool empty()const {return count == 0;}
     void add(K key, V value) { root = add(root, key, value);}
     bool contain(K key){return getNode(root, key) != NULL;}
     V get(K key){

@@ -22,10 +22,10 @@ public:
     bool contain(K e){
         return bst.contain(e);
     }
-    int size(){
+    int size() const {
         return bst.size();
     }
-    bool empty(){
+    bool empty() const {
         return bst.empty();
     }
 };

@@ -5,8 +5,8 @@
 template <typename T>
 class Stack {
 public:
-    virtual int size() = 0; 
-    virtual bool empty() = 0;
+    virtual int size() const  = 0; 
+    virtual bool empty() const = 0;
     virtual void push(T e) = 0;
     virtual T pop() = 0; 
     virtual T top() = 0;

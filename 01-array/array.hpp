@@ -42,10 +42,10 @@ public:
         for(int i = 0; i < cap; i++)
             data[i] = e;
     }
-    int getCapacity() { return capacity; }
-    int size(){return count;}
-    bool empty(){return count == 0;}
-    void add(int index, T e)
+    int getCapacity() const  { return capacity; }
+    int size() const {return count;}
+    bool empty() const {return count == 0;}
+    void add  (int index, T e) 
     {
         assert(index >= 0 && index <= count);
         //assert(count < capacity);
@@ -64,6 +64,11 @@ public:
         return data[index];
     }
     T& operator[](int index)
+    {
+        assert(index >= 0 && index < count);
+        return data[index];
+    }
+    T& operator[](int index) const
     {
         assert(index >= 0 && index < count);
         return data[index];

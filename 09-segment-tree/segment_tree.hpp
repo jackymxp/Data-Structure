@@ -40,7 +40,7 @@ public:
         this->merge = merge;
         buildSegmentTree(0, 0, arr.size() - 1);        
     }
-    int size(){return data.size();}
+    int size() const {return data.size();}
     T get(int index)
     {
         assert(index >= 0 && index < data.size());

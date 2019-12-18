@@ -8,8 +8,8 @@ template<typename T>
 class ListStack : public Stack<T> 
 {
 public:
-    int size(){return l.size();}
-    bool empty(){return l.empty();}
+    int size() const {return l.size();}
+    bool empty() const {return l.empty();}
     void push(T e){l.addFirst(e);}
     T top(){return l.getFirst();}
     T pop(){return l.removeFirst();}

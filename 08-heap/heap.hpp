@@ -61,8 +61,8 @@ public:
             arr.addLast(a[i]);
         heapify();
     }
-    int size(){return arr.size();}
-    bool empty(){return arr.empty();}
+    int size() const {return arr.size();}
+    bool empty() const {return arr.empty();}
 
     void add(T e)
     {

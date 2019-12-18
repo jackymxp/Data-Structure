@@ -52,9 +52,9 @@ public:
     {
         delete[] data;
     }
-    int getCapacity(){return capacity - 1;}
-    int size(){return count;}
-    bool empty(){return head == tail;}
+    int getCapacity() const {return capacity - 1;}
+    int size() const {return count;}
+    bool empty() const {return head == tail;}
     void push(T e)
     {
         if((tail+1)%capacity == head)
